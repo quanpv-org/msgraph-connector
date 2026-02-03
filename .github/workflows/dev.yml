@@ -14,6 +14,12 @@ permissions:
 jobs:
   build:
     uses: axonivy-market/github-workflows/.github/workflows/dev.yml@v6
+    with:
+      mvnArgs: '"-Divy.engine.download.url=https://dev.axonivy.com/permalink/dev/axonivy-engine.zip" "-Divy.engine.version=(12.0.0,]" "-Dproject.build.plugin.version=14.0.0-SNAPSHOT"'
+      javaVersion: 21
+      mvnVersion: 3.9.8
+      ivyVersion: dev
+      migrateToLatestIvyVersion: true
     secrets:
       mvnArgs: -Dtest.azure.app.id=${{ secrets.AZURE_APP_ID }} -Dtest.azure.app.secretKey=${{ secrets.AZURE_APP_SECRET }} -Dtest.azure.app.tenantId=${{ secrets.AZURE_APP_TENANT_ID }} -Dtest.azure.webtest.username=${{ secrets.AZURE_APP_USER_NAME }} -Dtest.azure.webtest.pass=${{ secrets.AZURE_APP_USER_PASS }} 
     
